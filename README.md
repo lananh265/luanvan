@@ -9,3 +9,13 @@ Date : 15/08/2021
 
 Params: Fetch
 Cấu trúc
+fetch( url, {option}).then().then().catch((e)=>{});
+
+Hàm
+Lời gọi hàm
+SetTimeOut
+Hàm gọi hàm
+
+
+
+Promise
