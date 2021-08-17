@@ -1,30 +1,5 @@
 <?php
 
-
-
-
-// $a = 0;
-// $b = '0';
-// $c = NULL;
-// $d = '';
-// $e = FALSE;
-
-// // if(isset($a)){
-// //     echo ("Bien ton tai");
-// //     //kiem tra a co ton tai
-// // }else{
-// //     echo ("Bien khong ton tai");
-// // }
-
-// if( empty($a) ){
-//     echo ("Rong");
-//     //kiem tra a co ton tai
-// }else{
-//     echo ("Khong rong");
-// }
-
-
-
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
     if ($_SERVER["REQUEST_METHOD"] == "POST") { 
@@ -33,13 +8,13 @@ header("Content-Type: application/json; charset=UTF-8");
         $json = file_get_contents('php://input'); // chứa gói tin json bị mã hóa
         $obj = json_decode($json,true); // {name: lananh} giải mã gói tin json
 
-        if( isset( $obj["username"]) && isset( $obj["password"]) && isset( $obj["name"]) && isset( $obj["email"])){
+        if( isset( $obj["username"]) && isset( $obj["password"])){
             // echo json_encode("ton tai");
 
             $taikhoan = $obj["username"];
             $matkhau = $obj["password"];
-            $ten = $obj["name"];
-            $email = $obj["email"];
+            // $ten = $obj["name"];
+            // $email = $obj["email"];
 
              //Connect MySQL
         $servername = "localhost";
@@ -55,15 +30,24 @@ header("Content-Type: application/json; charset=UTF-8");
         }else{
             // Connect MySQL thành công
 
-            $sql= "INSERT INTO users (username, password, name, email)
-            VALUES ('$taikhoan','$matkhau','$ten', '$email' )";
+            $sql= "select *from users where username='$taikhoan' and password='$matkhau'";
 
              //Thuc thi truy van
-             if ($conn->query($sql) === TRUE) {
-                echo json_encode("Thanh Cong");
-              } else {
-                echo json_encode ("Error creating user: " . $conn->error);
-              }
+
+             $result = $conn->query($sql);
+             if($result->num_rows > 0){
+                 echo json_encode("Login success");
+             }else{
+                 echo json_encode("Login Failed : " );
+             }
+
+            
+
+            //  if ($conn->query($sql) === TRUE) {
+            //     echo json_encode("Login Success");
+            //   } else {
+            //     echo json_encode ("Login Failed: " . $conn->error);
+            //   }
 
               $conn ->close();
         }

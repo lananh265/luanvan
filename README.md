@@ -19,3 +19,9 @@ Hàm gọi hàm
 
 
 Promise
+API Get dang ki users
+
+isset và empty trong php
+https://freetuts.net/ham-isset-va-empty-trong-php-350.html
+isset : ứng dụng from input
+empty : ứng dụng kiểm tra dữ liệu khi người dùng đăng nhập
