@@ -8,31 +8,13 @@ header("Content-Type: application/json; charset=UTF-8");
         $json = file_get_contents('php://input'); // chứa gói tin json bị mã hóa
         $obj = json_decode($json,true); // {name: lananh} giải mã gói tin json
 
-
-        function randomString($length = 10) {
-            $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-            $charactersLength = strlen($characters);
-            $randomString = '';
-            for ($i = 0; $i < $length; $i++) {
-                $randomString .= $characters[rand(0, $charactersLength - 1)];
-            }
-            return $randomString;
-        }
-
-
-
-
-        if( isset( $obj["username"]) && isset( $obj["password"]) && isset( $obj["name"]) && isset( $obj["email"])){
+        if( isset( $obj["username"]) && isset( $obj["password"])){
             // echo json_encode("ton tai");
 
             $taikhoan = $obj["username"];
             $matkhau = $obj["password"];
-            $name = $obj ["name"];
-            $email = $obj ["email"];
-
-            //muoi ngau nhien            
-            $salt = randomString();
-            $hash = md5($matkhau.$salt); //mat khau da duoc bam
+            // $ten = $obj["name"];
+            // $email = $obj["email"];
 
              //Connect MySQL
         $servername = "localhost";
@@ -48,16 +30,37 @@ header("Content-Type: application/json; charset=UTF-8");
         }else{
             // Connect MySQL thành công
 
-            $sql= "INSERT INTO users2 (username, password,salt, name, email)
-            VALUES ('$taikhoan','$hash','$salt','$name', '$email' )";
+            //Di tim Salt tuong ung voi User
+            $findSalt = "SELECT salt FROM users2 where username = '$taikhoan'";
+            $resultSalt = mysqli_query($conn, $findSalt);
+            $row = mysqli_fetch_row($resultSalt);
+            $salt = $row[0]; //gia tri salt:
+            $hash = md5($matkhau.$salt);
+            
+            $sql = "SELECT *FROM users2 WHERE username='$taikhoan' and password ='$hash'";
+            // echo ($salt);
+
 
              //Thuc thi truy van
 
-             if ($conn->query($sql) === TRUE) {
-                echo "Dang ki thanh cong";
-              } else {
-                echo "Dang ki that bai: " . $conn->error;
-              }
+             $result = $conn->query($sql);
+             if($result->num_rows > 0){
+                 echo json_encode("Login success");
+             }else{
+                 echo json_encode("Login Failed : " );
+             }
+
+
+            // $sql= "select *from users2 where username='$taikhoan' and password='$matkhau'";
+
+            //  //Thuc thi truy van
+
+            //  $result = $conn->query($sql);
+            //  if($result->num_rows > 0){
+            //      echo json_encode("Login success");
+            //  }else{
+            //      echo json_encode("Login Failed : " );
+            //  }
 
             
 
@@ -74,11 +77,10 @@ header("Content-Type: application/json; charset=UTF-8");
 
 
         }else{
-            echo json_encode("Du lieu trong Object khong day du");
+            echo json_encode("khong ton tai key nay trong object");
         }
 
     }else{
         echo json_encode("khong phai phuong thuc POST");
     }
-
 ?>
