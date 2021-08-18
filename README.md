@@ -19,7 +19,7 @@ Hàm gọi hàm
 
 
 Promise
-API Get dang ki users
+API Get đăng kí users
 
 isset và empty trong php
 https://freetuts.net/ham-isset-va-empty-trong-php-350.html
