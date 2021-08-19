@@ -38,16 +38,26 @@ header("Content-Type: application/json; charset=UTF-8");
             $hash = md5($matkhau.$salt);
             
             $sql = "SELECT *FROM users2 WHERE username='$taikhoan' and password ='$hash'";
+           
+           
+           
+           
             // echo ($salt);
 
 
              //Thuc thi truy van
 
              $result = $conn->query($sql);
+            // echo gettype($result);
+
+            $success = '{"status":1}';
+            $failed = '{"status":0}';
+
+
              if($result->num_rows > 0){
-                 echo json_encode("Login success");
+                 echo ($success);
              }else{
-                 echo json_encode("Login Failed : " );
+                 echo ($failed );
              }
 
 
@@ -77,6 +87,7 @@ header("Content-Type: application/json; charset=UTF-8");
 
 
         }else{
+            $success = '{"status":1}';
             echo json_encode("khong ton tai key nay trong object");
         }
 
