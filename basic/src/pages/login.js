@@ -27,12 +27,15 @@
 
 import {React,useState} from "react";
  import {Link} from "react-router-dom";
+ import { useHistory } from "react-router";
 
 export default function Login(){
   const [userName, setuserName] = useState("");
   const [password, setpassword] = useState("");
 
   const [status, setStatus] = useState(0);
+  const history = useHistory();
+  
 
 
   const login = () =>{
@@ -57,7 +60,8 @@ export default function Login(){
     .then((dulieuJson)=>{
       console.log(dulieuJson);
 
-      setStatus(dulieuJson.status);
+      // setStatus(dulieuJson.status);
+      dulieuJson.status ? history.push("/welcome") : alert("Sai tài khoản hoặc password")
 
     })
     .catch((error)=>{
