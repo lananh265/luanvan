@@ -15,7 +15,9 @@ const Welcome = () => {
   return (
     <div>
       <h3>Welcome</h3>
-      <Link to="/login" >Go to Login</Link>
+      <Link to="/" >Go to Login </Link>
+
+      
     </div>
   );
 }
