@@ -36,6 +36,7 @@ header("Content-Type: application/json; charset=UTF-8");
 
              $result = $conn->query($sql);
              if($result->num_rows > 0){
+                // sleep =("2");
                  echo json_encode("Login success");
              }else{
                  echo json_encode("Login Failed : " );
