@@ -7,14 +7,14 @@
 
 
 // import Demo from "./drawer/demo";
-// import List from "./drawer/list";
-import Storage from "./drawer/storage";
+ import List from "./drawer/list";
+// import Storage from "./drawer/storage";
 
 function App() {
   return (
     <>
     
-    <Storage />
+    <List />
     </>
   );
 }
