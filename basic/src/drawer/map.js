@@ -60,12 +60,24 @@ const obj1 = giatien[0]
 // console.log(obj1.giatien)
 
 const duyet = giatien.map((element) =>{
-       return element.giatien/2
+       return {ten: element.ten, giatien: element.giatien/2
+           }
 
     
     })//element = giatien[0] element = giatien[1]
+//duyet [duyet tung phan tu]=>[1000,2000]
+
+ 
 
 console.log(duyet)
+
+// const person =()=>{
+//     return {
+//         age:50,
+//         eyeColor: "blue"
+//     }
+       
+// }
 
 
 
