@@ -81,7 +81,9 @@ export default function List (){
 
     },[])
     const listItems = price.map( (e,index)=>{
-        return <h3 key={index}>id: {price[index].id}&nbsp;&nbsp; ten: {price[index].ten}&nbsp;&nbsp;&nbsp; gia: {price[index].gia}</h3>
+        return <h3 key={index}>id: {price[index].id}&nbsp;&nbsp; 
+        ten: {price[index].ten}&nbsp;&nbsp;&nbsp; 
+        gia: {price[index].gia}</h3>
         
     })
     const giamGia = price.map((e)=>{
@@ -96,17 +98,10 @@ export default function List (){
     //     setPrice(giamGia)
     // }
        
-
     return(
         <>
         <h1>Day la the List</h1>
-        {listItems}
-        {/* <h3>id:{price[0].id} ten:{price[0].ten} gia:{price[0].gia}</h3>
-        <h3>id:{price[1].id} ten:{price[1].ten} gia:{price[1].gia}</h3> 
-        <h3>id:{price[2].id} ten:{price[2].ten} gia:{price[2].gia}</h3>
-        <h3>id:{price[3].id} ten:{price[3].ten} gia:{price[3].gia}</h3>
-        <h3>id:{price[4].id} ten:{price[4].ten} gia:{price[4].gia}</h3> */}
-       
+        {listItems}       
         <button onClick={ ()=> {xemLog()}}>Dieu chinh giam gia</button>
         </>
     )

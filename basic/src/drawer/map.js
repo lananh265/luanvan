@@ -66,9 +66,6 @@ const duyet = giatien.map((element) =>{
     
     })//element = giatien[0] element = giatien[1]
 //duyet [duyet tung phan tu]=>[1000,2000]
-
- 
-
 console.log(duyet)
 
 // const person =()=>{
