@@ -1,50 +1,49 @@
-import React , { useState }  from 'react';
-import './App.css';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Dashboard from '../Dashboard/Dashboars';
-import Login from '../Login/Login';
-import Preferences from '../Preferences/Preferences';
+// import Login from "./components/login";
+// import Test from "./components/test";
+// import LinkRoute from "./pages/link";
+//import Demo from "./drawer/demo";
+// import List from "./drawer/list";
+//import Storage from "./drawer/storage";
+//import Login from "./containers/login";
+//import Routes from "./containers/routes"
+// import Inline from "./components/css/inline";
+// import './components/css/appStyles.css';
+// import  styles from './components/css/appStyles.module.css';
+import Status from "./status/status";
+// import Flex from "./components/css/flex";
+function App() {
+  return (
+    <>
+      <Status />
+    </>
+  );
+}
 
-import useToken from './useToken';
+export default App;
 
-// function setToken(userToken) {
-//     sessionStorage.setItem('token', JSON.stringify(userToken));
-//    }
-    
-//    function getToken() {
-//     const tokenString = sessionStorage.getItem('token');
-//     const userToken = JSON.parse(tokenString);
-//     return userToken?.token
-//    }
-    
-   function App() {
-    const { token, setToken } = useToken();
+// import React from "react";
+// import {
+//   BrowserRouter as Router,
+//   Route,
+//   Switch
+// } from "react-router-dom";
+// // import Products from "./pages"
+// // import Product from "./pages/product"
 
-     //const [token, setToken] = useState();
-    // const token = getToken();
-    if(!token) {
-      return <Login setToken={setToken} />
-    }
-    const Logout = ()=>{
-      localStorage.removeItem('token');
-    }
-    return (
-      <div className="wrapper">
-        <h1>Application</h1>
-        <button onClick ={()=>{Logout()}}>Log out</button>
-        <BrowserRouter>
-          <Switch>
-            <Route path="/dashboard">
-              <Dashboard />
-            </Route>
-            <Route path="/preferences">
-              <Preferences />
-            </Route>
-          </Switch>
-        </BrowserRouter>
-      </div>
-    );
-   }
-    
-   export default App;
-   
+// import Login from "./pages/login";
+// import Welcome from "./pages/welcome";
+
+
+// const App = () => {
+//   return (
+//     <Router>
+//       <Switch>
+//         <Route exact path="/" ><Login /></Route>
+//         <Route path="/welcome"><Welcome /></Route>
+        
+//       </Switch>
+//     </Router>
+//   );
+// }
+
+// export default App;

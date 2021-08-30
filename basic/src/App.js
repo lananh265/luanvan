@@ -9,12 +9,13 @@
 // import Demo from "./drawer/demo";
  import List from "./drawer/list";
 // import Storage from "./drawer/storage";
+import Status from "./status/status";
 
 function App() {
   return (
     <>
-    
-    <List />
+    <Status />
+    {/* <List /> */}
     </>
   );
 }
