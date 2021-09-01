@@ -9,12 +9,16 @@
 // import Demo from "./drawer/demo";
  import List from "./drawer/list";
 // import Storage from "./drawer/storage";
-import Status from "./status/status";
+// import Status from "./status/status";
+
+// import App2 from "./components/ve/App";
+
+import Flex from "./components/flex/flex";
 
 function App() {
   return (
     <>
-    <Status />
+    <Flex />
     {/* <List /> */}
     </>
   );
